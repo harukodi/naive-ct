@@ -1,0 +1,8 @@
+naive.harus.cloud {
+  forward_proxy {
+    basic_auth xia1997x fbfb23
+    hide_ip
+    hide_via
+    probe_resistance
+  }
+}
