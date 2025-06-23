@@ -11,7 +11,7 @@
 		probe_resistance
 	}
 	handle {
-		respond "Error: Invalid or Missing API Key" 401 {
+		respond `{"error": "Invalid or missing API key", "code": 401}` 401 {
 			close
 		}
 	}
