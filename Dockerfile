@@ -4,8 +4,8 @@ ARG CADDY_BUILDER_VERSION=2.9-builder-alpine
 ARG CADDY_SERVER_VERSION=2.9.1-alpine
 FROM caddy:${CADDY_BUILDER_VERSION} AS builder
 RUN xcaddy build \
-    --with github.com/caddy-dns/cloudflare
-    --with github.com/klzgrad/forwardproxy@naive
+    --with github.com/caddy-dns/cloudflare \
+    --with github.com/caddyserver/forwardproxy=github.com/klzgrad/forwardproxy@naive
 FROM caddy:${CADDY_SERVER_VERSION}
 
 # Build the base image for naive proxy
@@ -19,7 +19,7 @@ COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 WORKDIR /naive_base
 COPY . /naive_base/
 RUN addgroup -S naive_group && adduser -S naive_user -G naive_group
-RUN mkdir /naive_base/caddy_certs && \
+RUN mkdir /naive_base/caddy/caddy_certs && \
     chmod +x /usr/bin/caddy && \
     apk update && apk add --no-cache libcap && \
     setcap cap_net_bind_service=+ep /usr/bin/caddy && \

@@ -1,0 +1,7 @@
+venv
+.env
+.gitignore
+Dockerfile
+.Dockerignore
+__pycache__
+caddy/Caddyfile

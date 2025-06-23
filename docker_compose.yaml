@@ -1,0 +1,9 @@
+services:
+  naive_proxy:
+    image: xia1997x/naive-proxy:latest
+    container_name: naive_proxy_ct
+    ports:
+      - "8443:443"
+    volumes:
+      - ./caddy_data:/caddy
+    restart: unless-stopped
