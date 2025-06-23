@@ -4,4 +4,4 @@ venv
 Dockerfile
 .Dockerignore
 __pycache__
-caddy/Caddyfile
+caddy/*
