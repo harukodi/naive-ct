@@ -1,18 +1,14 @@
 {
 	acme_dns cloudflare {env.CF_TOKEN}
+	order forward_proxy before handle
 }
 
-${DOMAIN_NAME} {
-	@naive_proxy {
-		path /${PATH}
-	}
-	handle @naive_proxy {
-		forward_proxy {
-			basic_auth ${USERNAME} ${PASSWORD}
-			hide_ip
-			hide_via
-			probe_resistance
-		}
+:443, ${DOMAIN_NAME} {
+	forward_proxy {
+		basic_auth ${USERNAME} ${PASSWORD}
+		hide_ip
+		hide_via
+		probe_resistance
 	}
 	handle {
 		respond "Error: Invalid or Missing API Key" 401 {
