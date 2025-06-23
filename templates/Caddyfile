@@ -4,6 +4,9 @@
 }
 
 :443, ${DOMAIN_NAME} {
+	tls {
+		protocols tls1.3 tls1.3
+	}
 	header {
 		-Server
 		-Alt-svc
