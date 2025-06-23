@@ -24,6 +24,7 @@ RUN mkdir /naive_base/caddy/caddy_certs && \
     apk update && apk add --no-cache libcap && \
     setcap cap_net_bind_service=+ep /usr/bin/caddy && \
     chown -R naive_user:naive_group /naive_base && \
+    chmod -R ug+rwx /naive_base/caddy && \
     rm -rf /var/cache/apk/*
 RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \

@@ -2,6 +2,7 @@ services:
   naive_proxy:
     image: xia1997x/naive-proxy:latest
     container_name: naive_proxy_ct
+    env_file: .naive_env
     ports:
       - "8443:443"
     volumes:
