@@ -4,6 +4,12 @@
 }
 
 :443, ${DOMAIN_NAME} {
+	header {
+		-Server
+		-Alt-svc
+		-X-Powered-By
+		-Via
+	}
 	forward_proxy {
 		basic_auth ${USERNAME} ${PASSWORD}
 		hide_ip
